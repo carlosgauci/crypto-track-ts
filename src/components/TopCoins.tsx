@@ -27,7 +27,7 @@ export const TopCoins = () => {
   console.log(coins);
 
   return (
-    <ul className="flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-white">
+    <ul className="flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-blue-900 scrollbar-track-blue-200 scrollbar-track-white">
       {coins.map((c) => (
         <Row key={c.id} coin={c} />
       ))}

@@ -12,10 +12,10 @@ export const Header = ({ setTable, table }: HeaderProps) => {
   };
   return (
     <header className="flex justify-center mb-4">
-      <div className="flex gap-0.5 justify-center bg-gray-300 p-2 rounded">
+      <div className="flex gap-0.5 justify-center bg-blue-900 p-2 rounded font-semibold">
         <button
           className={`py-1 px-4 rounded ${
-            table === "top" ? "bg-white shadow-sm" : "bg-transparent"
+            table === "top" ? "bg-white shadow-sm" : "bg-transparent text-white"
           }`}
           onClick={() => handleClick("top")}
         >
@@ -23,7 +23,9 @@ export const Header = ({ setTable, table }: HeaderProps) => {
         </button>
         <button
           className={`py-1 px-4 rounded ${
-            table === "watchlist" ? "bg-white shadow-sm" : "bg-transparent"
+            table === "watchlist"
+              ? "bg-white shadow-sm"
+              : "bg-transparent text-white"
           }`}
           onClick={() => handleClick("watchlist")}
         >
