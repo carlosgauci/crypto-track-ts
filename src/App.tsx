@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./components/Header";
+import { useState } from "react";
+import { TableHeader } from "./components/TableHeader";
+import { TopCoins } from "./components/TopCoins";
+import { Watchlist } from "./components/Watchlist";
 
 function App() {
+  const [table, setTable] = useState(localStorage.getItem("table") || "top");
+
+  // const [watchlist, setWatchlist] = useState(
+  //   JSON.parse(localStorage.getItem("watchlist") || "[]")
+  // );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-screen max-h-screen container overflow-hidden flex flex-col">
+      <div className="bg-white rounded my-14 p-8 pt-4 overflow-hidden flex flex-col">
+        <Header setTable={setTable} table={table} />
+        <main className="overflow-hidden flex flex-col">
+          <TableHeader />
+          {table === "top" ? <TopCoins /> : <Watchlist />}
+        </main>
+      </div>
     </div>
   );
 }
