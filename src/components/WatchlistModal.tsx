@@ -18,12 +18,14 @@ export const WatchlistModal = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchCoin[]>([]);
   const [coins, setCoins] = useState<SearchCoin[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
 
     const fetchData = async () => {
+      setLoading(true);
       await axios
         .get("https://api.coingecko.com/api/v3/coins/markets", {
           cancelToken: source.token,
@@ -41,6 +43,8 @@ export const WatchlistModal = ({
             console.log(err.message);
           }
         });
+
+      setLoading(false);
     };
 
     fetchData();
@@ -62,7 +66,7 @@ export const WatchlistModal = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black bg-opacity-70 flex flex-col justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none px-2"
+      className="fixed inset-0 z-50 bg-black bg-opacity-70 flex flex-col justify-center overflow-x-hidden overflow-y-auto  outline-none focus:outline-none px-4"
       onClick={() => setModalOpen(false)}
     >
       <Transition.Child
@@ -96,7 +100,7 @@ export const WatchlistModal = ({
                 h-7 bg-gray-100 block mx-auto"
             />
 
-            <div className="overflow-y-auto h-48">
+            <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-blue-900 scrollbar-track-gray-50 pr-2 h-48">
               {searchQuery.length > 0 &&
                 searchResults.length > 0 &&
                 searchResults.map((c) => (
@@ -107,11 +111,9 @@ export const WatchlistModal = ({
                     setWatchlist={setWatchlist}
                   />
                 ))}
-
               {searchQuery.length > 0 && searchResults.length === 0 && (
-                <p>No results found.</p>
+                <p className="text-center mt-4 text-sm">No results found.</p>
               )}
-
               {searchQuery.length === 0 &&
                 coins.map((c) => (
                   <SearchResult
@@ -121,6 +123,9 @@ export const WatchlistModal = ({
                     setWatchlist={setWatchlist}
                   />
                 ))}
+              {loading && (
+                <p className="text-center mt-4 text-sm">Loading...</p>
+              )}
             </div>
           </div>
         </div>
