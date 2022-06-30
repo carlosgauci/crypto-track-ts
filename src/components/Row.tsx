@@ -16,7 +16,7 @@ export const Row = ({ coin }: RowProps) => {
   };
 
   return (
-    <li className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 place-items-center p-3 border-b font-semibold hover:bg-gray-100 text-sm sm:text-base">
+    <li className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 place-items-center p-3 border-b font-semibold hover:bg-gray-100 text-sm sm:text-base relative group">
       <div className="flex w-full gap-8 items-center">
         <span className="w-8 text-center text-sm font-semibold hidden sm:block">
           {coin.market_cap_rank}
@@ -27,7 +27,6 @@ export const Row = ({ coin }: RowProps) => {
             alt={coin.name}
             className="w-5 object-contain"
           />
-          {/* <span className="">{coin.name}</span> */}
           <span className="uppercase font-semibold">{coin.symbol}</span>
         </div>
       </div>
