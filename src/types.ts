@@ -9,12 +9,3 @@ export type Coin = {
     current_price:number;
     symbol:string
   };
-
-export type SearchCoin = {
-    id: string;
-    name: string;
-    symbol:string
-    thumb?: string;
-    image?: string;
-    market_cap_rank: number;
-  };

@@ -1,9 +1,9 @@
-import { SearchCoin } from "../types";
+import { Coin } from "../types";
 import { useState, Dispatch, SetStateAction } from "react";
 import { Switch } from "@headlessui/react";
 
 interface SearchResultProps {
-  coin: SearchCoin;
+  coin: Coin;
   watchlist: string[];
   setWatchlist: Dispatch<SetStateAction<string[]>>;
 }
@@ -36,11 +36,7 @@ export const SearchResult = ({
       }`}
     >
       <div className="w-full flex gap-3 items-center ">
-        <img
-          src={coin.thumb || coin.image}
-          alt={coin.name}
-          className="w-5 object-contain"
-        />
+        <img src={coin.image} alt={coin.name} className="w-5 object-contain" />
         <span>
           <span className="uppercase font-semibold text-sm">{coin.symbol}</span>
           <span className="uppercase font-semibold text-xxs ml-2 truncate">

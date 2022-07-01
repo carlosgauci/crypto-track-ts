@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
-import { SearchCoin } from "../types";
+import { Coin } from "../types";
 import { SearchResult } from "./SearchResult";
 
 interface ModalProps {
@@ -16,8 +16,8 @@ export const WatchlistModal = ({
   watchlist,
 }: ModalProps) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchCoin[]>([]);
-  const [coins, setCoins] = useState<SearchCoin[]>([]);
+  const [searchResults, setSearchResults] = useState<Coin[]>([]);
+  const [coins, setCoins] = useState<Coin[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
